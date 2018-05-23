@@ -9,13 +9,13 @@
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
     crossorigin="anonymous">
-  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> -->
   <!-- Bootstrap core CSS -->
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <!-- Material Design Bootstrap -->
-  <link href="css/mdb.min.css" rel="stylesheet">
+  <link href="css/mdb.css" rel="stylesheet">
   <!-- Your custom styles (optional) -->
   <link href="css/style.css" rel="stylesheet">
+  <!-- Cargando Animaciones -->
   <style type="text/css">
     html,
     body,
@@ -24,7 +24,7 @@
       height: 100%;
     }
 
-    @media (max-width: 766px) {
+    @media (max-width: 760px) {
       html,
       body,
       header,
@@ -61,72 +61,53 @@
 </head>
 
 <body>
-
+  
   <!-- Navbar -->
   <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
-    <div class="container">
-
-      <!-- Brand -->
-      <a class="navbar-brand" href="#" target="_blank">
-        <i class="fab fa-accusoft"></i>
-        <strong class="d-none d-md-inline">MOVEPOPAYÁN</strong>
-      </a>
-
-      <!-- Collapse -->
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-        aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <!-- Links -->
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-        <!-- Left -->
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Inicio
-              <span class="sr-only">(current)</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Registrarse</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Iniciar Sesión</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Nosotros</a>
-          </li>
-        </ul>
-
-        <!-- Right -->
-        <!-- <ul class="navbar-nav nav-flex-icons">
-          <li class="nav-item">
-            <a href="https://www.facebook.com/mdbootstrap" class="nav-link" target="_blank">
-              <i class="fa fa-facebook"></i>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="https://twitter.com/MDBootstrap" class="nav-link" target="_blank">
-              <i class="fa fa-twitter"></i>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="https://github.com/mdbootstrap/bootstrap-material-design" class="nav-link border border-light rounded"
-              target="_blank">
-              <i class="fa fa-github mr-2"></i>MDB GitHub
-            </a>
-          </li>
-        </ul> -->
-
+      <div class="container">
+  
+        <!-- Brand -->
+        <a class="navbar-brand" href="#">
+          <i class="fab fa-accusoft"></i>
+          <strong class="d-none d-md-inline">MOVEPOPAYÁN</strong>
+        </a>
+  
+        <!-- Collapse -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+          aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+  
+        <!-- Links -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+  
+          <!-- Left -->
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Inicio
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#form">Registrarse</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Iniciar Sesión</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#nosotros">Nosotros</a>
+            </li>
+          </ul>  
+        </div>
+  
       </div>
+    </nav>
 
-    </div>
-  </nav>
+
   <!-- Navbar -->
 
   <!-- Full Page Intro -->
-  <div class="view full-page-intro " style="background-image: url('https://blog.ryanair.com/wp-content/uploads/2016/02/city-apps.jpg'); background-repeat: no-repeat; background-size: cover;">
+  <div class="view full-page-intro" style="background-image: url('https://blog.ryanair.com/wp-content/uploads/2016/02/city-apps.jpg'); background-repeat: no-repeat; background-size: cover;">
 
     <!-- Mask & flexbox options-->
     <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
@@ -135,7 +116,7 @@
       <div class="container mt-5">
 
         <!--Grid row-->
-        <div class="row wow mt-5 fadeIn">
+        <div class="row mt-5">
 
           <!--Grid column-->
           <div class="col-md-7 mb-4 mt-2 pt-3 white-text text-center text-md-left">
@@ -153,7 +134,7 @@
 
                 Si ya estás registrado puedes iniciar sesión
               </div>
-              <a target="_blank" href="https://mdbootstrap.com/bootstrap-tutorial/" class="btn btn-warning btn-lg align-items-center justify-content-center  d-flex w-100">Iniciar sesión
+              <a target="_blank" href="#" class="btn btn-warning btn-lg align-items-center justify-content-center  d-flex w-100">Iniciar sesión
               </a>
 
             </p>
@@ -163,7 +144,7 @@
           <!--Grid column-->
 
           <!--Grid column-->
-          <div class="col-md-5 col-xl-5 mb-5 mt-2 pt-3">
+          <div id="form" class="col-md-5 col-xl-5 mb-5 mt-2 pt-3">
 
             <!--Card-->
             <div class="card">
@@ -186,8 +167,8 @@
                   </div>
                   <div class="md-form">
                     <i class="fa fa-user prefix grey-text"></i>
-                    <input type="text" id="" class="form-control" required>
-                    <label for="form3">Apellidos</label>
+                    <input type="text" id="form1" class="form-control" required>
+                    <label for="form1">Apellidos</label>
                   </div>
                   <div class="md-form">
                     <i class="fa fa-envelope prefix grey-text"></i>
@@ -234,18 +215,18 @@
   <!-- Full Page Intro -->
 
   <!--Main layout-->
-  <main>
+  <main id="nosotros">
     <div class="container">
 
       <!--Section: Main info-->
       <p class="text-center h2 text-warning m-4 ">NOSOTROS</p>
-      <section class="mt-4 wow fadeIn">
+      <section class="mt-4">
 
         <!--Grid row-->
         <div class="row">
 
           <!--Grid column-->
-          <div class="col-md-6 mb-4">
+          <div class="col-md-6 mb-4 wow fadeInLeft">
 
             <img src="img/pic01.jpg" class="img-fluid z-depth-1-half" alt="">
 
@@ -253,7 +234,7 @@
           <!--Grid column-->
 
           <!--Grid column-->
-          <div class="col-md-6 mb-0 d-flex align-items-center flex-wrap">
+          <div class="col-md-6 mb-0 d-flex align-items-center flex-wrap wow fadeInRight">
 
             <!-- Main heading -->
             <h3 class="h4 text-center mb-2 ">PUEDES ESTAR EN CUALQUIER PARTE DE LA CIUDAD</h3>
@@ -270,13 +251,13 @@
       </section>
       <hr>
 
-      <section class="mt-4 wow fadeIn ">
+      <section class="mt-4">
 
         <!--Grid row-->
         <div class="row flex-row-reverse">
 
           <!--Grid column-->
-          <div class="col-md-6 mb-4">
+          <div class="col-md-6 mb-4 wow fadeInRight">
 
             <img src="img/pic02.jpg" class="img-fluid z-depth-1-half" alt="">
 
@@ -284,7 +265,7 @@
           <!--Grid column-->
 
           <!--Grid column-->
-          <div class="col-md-6 mb-0 d-flex align-items-center flex-wrap">
+          <div class="col-md-6 mb-0 d-flex align-items-center flex-wrap wow fadeInLeft">
 
             <!-- Main heading -->
             <h3 class="h4 text-center mb-2 ">PUEDES VER DONDE VIENE TU AUTOBUS</h3>
@@ -301,13 +282,13 @@
       </section>
       <hr>
 
-      <section class="mt-4 wow fadeIn">
+      <section class="mt-4">
 
         <!--Grid row-->
         <div class="row">
 
           <!--Grid column-->
-          <div class="col-md-6 mb-4">
+          <div class="col-md-6 mb-4 wow fadeInLeft">
 
             <img src="img/pic03.jpg" class="img-fluid z-depth-1-half" alt="">
 
@@ -315,11 +296,12 @@
           <!--Grid column-->
 
           <!--Grid column-->
-          <div class="col-md-6 mb-0 d-flex align-items-center flex-wrap">
+          <div class="col-md-6 mb-0 d-flex align-items-center flex-wrap wow fadeInRight">
 
             <!-- Main heading -->
             <h3 class="h4 text-center mb-2 ">MÁS INFORMACIÓN DEL AUTOBUS</h3>
-            <p class="h5 dark-grey-text">Podras ver otro tipo de información como el numero de pasajeros, con el fin de que no hagas una espera improductiva de un autobus con cupo lleno.</p>
+            <p class="h5 dark-grey-text">Podras ver otro tipo de información como el numero de pasajeros, con el fin de que no hagas una espera improductiva
+              de un autobus con cupo lleno.</p>
             <p>Y otros datos como: Temperatura, humedad y velocidad aproximada</p>
             <!-- Main heading -->
             <hr>
@@ -334,21 +316,21 @@
       <hr>
       <!--Section: Main info-->
 
-  
+
 
 
 
 
       <!--Section: Not enough-->
-      <section>
+      <section class="">
 
         <h2 class="my-5 h3 text-center text-warning">¿Qué se viene con MOVEPOPAYÁN?</h2>
 
         <!--First row-->
-        <div class="row features-small mb-5 mt-3 wow fadeIn">
+        <div class="row features-small mb-5 mt-3">
 
           <!--First column-->
-          <div class="col-md-4">
+          <div class="col-md-5 wow fadeInLeft">
             <!--First row-->
             <div class="row">
               <div class="col-2">
@@ -370,8 +352,7 @@
               </div>
               <div class="col-10">
                 <h6 class="feature-title">Geolocalización</h6>
-                <p class="dark-grey-text">Si no conoces la ciudad, solo activa el GPS de tu móvil
-                   y podras saber en que punto te encuentras.
+                <p class="dark-grey-text">Si no conoces la ciudad, solo activa el GPS de tu móvil y podras saber en que punto te encuentras.
                 </p>
                 <div style="height:15px"></div>
               </div>
@@ -398,9 +379,9 @@
               </div>
               <div class="col-10">
                 <h6 class="feature-title">¿El autobus tiene cupo?</h6>
-                <p class="dark-grey-text">Al sellecionar el autobus de tu interes, puedes ver el numero de pasajeros.
-                    Asi sabrás si el cupo esta lleno o aun hay sillas disponibles
-                  </p>
+                <p class="dark-grey-text">Al sellecionar el autobus de tu interes, puedes ver el numero de pasajeros. Asi sabrás si el cupo esta lleno
+                  o aun hay sillas disponibles
+                </p>
                 <div style="height:15px"></div>
               </div>
             </div>
@@ -409,13 +390,13 @@
           <!--/First column-->
 
           <!--Second column-->
-          <div class="col-md-4 flex-center">
-            <!-- <img src="https://mdbootstrap.com/img/Others/screens.png" alt="MDB Magazine Template displayed on iPhone" class="z-depth-0 img-fluid"> -->
+          <div class="col-md-2 flex-center">
+            <!-- <img src="" class="z-depth-0 img-fluid"> -->
           </div>
           <!--/Second column-->
 
           <!--Third column-->
-          <div class="col-md-4 mt-2">
+          <div class="col-md-5 mt-2 wow fadeInRight">
             <!--First row-->
             <div class="row">
               <div class="col-2">
@@ -423,7 +404,7 @@
               </div>
               <div class="col-10">
                 <h6 class="feature-title">Temperatura y Humedad</h6>
-                <p class="grey-text">Puedes ver la temperatura y la humedad del Autobus, para garantizar el confort de los viajeros
+                <p class="dark-grey-text">Puedes ver la temperatura y la humedad del Autobus, para garantizar el confort de los viajeros
                 </p>
                 <div style="height:15px"></div>
               </div>
@@ -436,9 +417,9 @@
                 <i class="fa fa-check-circle fa-2x indigo-text"></i>
               </div>
               <div class="col-10">
-                  <h6 class="feature-title">La ruta más conveniente</h6>
-                  <p class="grey-text">MOVEPOPAYÁN te muestra la ruta más cercana y conveniente para que tu la puedas tomar si asi lo deseas.
-                    </p>
+                <h6 class="feature-title">La ruta más conveniente</h6>
+                <p class="dark-grey-text">MOVEPOPAYÁN te muestra la ruta más cercana y conveniente para que tu la puedas tomar si asi lo deseas.
+                </p>
                 <div style="height:15px"></div>
               </div>
             </div>
@@ -450,8 +431,8 @@
                 <i class="fa fa-check-circle fa-2x indigo-text"></i>
               </div>
               <div class="col-10">
-                <h6 class="feature-title"></h6>
-                <p class="grey-text">.
+                <h6 class="feature-title">El momento preciso</h6>
+                <p class="dark-grey-text">Toma tu autobus autobus en el momento preciso, y evita los largos minutos de espera
                 </p>
                 <div style="height:15px"></div>
               </div>
@@ -464,8 +445,8 @@
                 <i class="fa fa-check-circle fa-2x indigo-text"></i>
               </div>
               <div class="col-10">
-                <h6 class="feature-title"></h6>
-                <p class="grey-text">U</p>
+                <h6 class="feature-title">Haz de tu ciudad una ciudad inteligente</h6>
+                <p class="dark-grey-text">Apuntate y sumate a la comunidad de personas que quiere vivir en un mundo mejor</p>
                 <div style="height:15px"></div>
               </div>
             </div>
@@ -490,25 +471,23 @@
   <!--Main layout-->
 
   <!--Footer-->
-  <footer class="page-footer text-center font-small mt-4 wow fadeIn">
-
-
+  <footer class="container-fluid page-footer text-center font-small mt-4 wow fadeIn">
 
     <hr class="my-4">
 
     <!-- Social icons -->
-    <div class="pb-4 row" >
+    <div class="pb-4 row">
       <p class="col-12 h4">Developers</p>
       <div class="col-12 col-md-4">
         <p>Rafael Alejandro Belalcázar Burbano</p>
         <p>Edinson David Leon Chilito</p>
       </div>
       <div class="col-12 col-md-4">
-          <p>Israel Andres Muñoz Hinestrosa</p>
-          <p>Jhonatan Tobar</p>
+        <p>Israel Andres Muñoz Hinestrosa</p>
+        <p>Jhonatan Tobar</p>
       </div>
       <div class="col-12 col-md-4">
-        Luis Felipe Bastidas Lopez
+        Luis Felipe Bastidas Torres
       </div>
 
     </div>

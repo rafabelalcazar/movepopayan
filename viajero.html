@@ -15,7 +15,8 @@
     <link href="css/mdb.min.css" rel="stylesheet">
     <!-- Your custom styles (optional) -->
     <link href="css/style.css" rel="stylesheet">
-
+    <!-- Estilos para el mapa -->
+    <link rel="stylesheet" href="css/stylemap.css">
 </head>
 
 <body>
@@ -23,7 +24,7 @@
         <div class="container">
 
             <!-- Brand -->
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="index.html">
                 <i class="fab fa-accusoft"></i>
                 <strong class="d-none d-md-inline">MOVEPOPAYÁN</strong>
             </a>
@@ -54,11 +55,21 @@
                     </li>
                 </ul>
             </div>
-
         </div>
     </nav>
 
-
+    <!-- Div para mostrar el mapa -->
+    <div id="map"></div>
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+        crossorigin="anonymous"></script>
+    <script src="js/ubicacion.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDofv40C3A72DWtGGWNr3abXR0uA3p5KP4&callback=initMap">
+    </script>
 </body>
 
 </html>

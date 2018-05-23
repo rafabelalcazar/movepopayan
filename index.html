@@ -64,49 +64,10 @@
 
   <!-- Navbar -->
   <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
-<<<<<<< HEAD
-      <div class="container">
-  
-        <!-- Brand -->
-        <a class="navbar-brand" href="#">
-          <i class="fab fa-accusoft"></i>
-          <strong class="d-none d-md-inline">MOVEPOPAYÁN</strong>
-        </a>
-  
-        <!-- Collapse -->
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-          aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-  
-        <!-- Links -->
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-  
-          <!-- Left -->
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="#">Inicio
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#form">Registrarse</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Iniciar Sesión</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#nosotros">Nosotros</a>
-            </li>
-          </ul>  
-        </div>
-  
-      </div>
-    </nav>
-=======
     <div class="container">
 
       <!-- Brand -->
-      <a class="navbar-brand" href="#" target="_blank">
+      <a class="navbar-brand" href="#">
         <i class="fab fa-accusoft"></i>
         <strong class="d-none d-md-inline">MOVEPOPAYÁN</strong>
       </a>
@@ -124,44 +85,26 @@
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
             <a class="nav-link" href="#">Inicio
-              <span class="sr-only">(current)</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Registrarse</a>
+            <a class="nav-link" href="#form">Registrarse</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Iniciar Sesión</a>
+            <a class="nav-link" data-toggle="modal" data-target="#exampleModal">Iniciar Sesión</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Nosotros</a>
+            <a class="nav-link" href="#nosotros">Nosotros</a>
           </li>
         </ul>
-
-        <!-- Right -->
-        <!-- <ul class="navbar-nav nav-flex-icons">
-          <li class="nav-item">
-            <a href="https://www.facebook.com/mdbootstrap" class="nav-link" target="_blank">
-              <i class="fa fa-facebook"></i>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="https://twitter.com/MDBootstrap" class="nav-link" target="_blank">
-              <i class="fa fa-twitter"></i>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="https://github.com/mdbootstrap/bootstrap-material-design" class="nav-link border border-light rounded"
-              target="_blank">
-              <i class="fa fa-github mr-2"></i>MDB GitHub
-            </a>
-          </li>
-        </ul> -->
->>>>>>> parent of 4a2a0e4... Pagina web terminada
-
       </div>
 
     </div>
+  </nav>
+
+  </div>
+
+  </div>
   </nav>
   <!-- Navbar -->
 
@@ -193,7 +136,7 @@
 
                 Si ya estás registrado puedes iniciar sesión
               </div>
-              <a target="_blank" href="https://mdbootstrap.com/bootstrap-tutorial/" class="btn btn-warning btn-lg align-items-center justify-content-center  d-flex w-100">Iniciar sesión
+              <a data-toggle="modal" data-target="#exampleModal" href="#" class="btn btn-warning btn-lg align-items-center justify-content-center  d-flex w-100">Iniciar sesión
               </a>
 
             </p>
@@ -221,24 +164,24 @@
 
                   <div class="md-form">
                     <i class="fa fa-user prefix grey-text"></i>
-                    <input type="text" id="form3" class="form-control" required>
-                    <label for="form3">Nombres</label>
+                    <input type="text" id="form1" class="form-control" required>
+                    <label for="form1">Nombres</label>
                   </div>
                   <div class="md-form">
                     <i class="fa fa-user prefix grey-text"></i>
-                    <input type="text" id="" class="form-control" required>
-                    <label for="form3">Apellidos</label>
+                    <input type="text" id="form2" class="form-control" required>
+                    <label for="form2">Apellidos</label>
                   </div>
                   <div class="md-form">
                     <i class="fa fa-envelope prefix grey-text"></i>
-                    <input type="email" id="form2" class="form-control" required>
-                    <label for="form2">Correo</label>
+                    <input type="email" id="form3" class="form-control" required>
+                    <label for="form3">Correo</label>
                   </div>
 
                   <div class="md-form">
                     <i class="fa fa-unlock-alt prefix grey-text"></i>
-                    <input type="password" id="form8" required class="password form-control"></input>
-                    <label for="form8">Contraseña</label>
+                    <input type="password" id="form4" required class="password form-control"></input>
+                    <label for="form4">Contraseña</label>
                   </div>
 
                   <div class="text-center">
@@ -264,11 +207,61 @@
         </div>
         <!--Grid row-->
 
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Inicia sesión</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="card">
+                  <!--Card content-->
+                  <div class="card-body">
+
+                    <!-- Form -->
+                    <form name="">
+                      <!-- Heading -->
+                      <h3 class="dark-grey-text text-center">
+                        <strong>Inicia sesión</strong>
+                      </h3>
+                      <hr>
+
+                      <div class="md-form">
+                        <i class="fa fa-envelope prefix grey-text"></i>
+                        <input type="email" id="loginname" class="form-control" required>
+                        <label for="form3">Correo</label>
+                      </div>
+
+                      <div class="md-form">
+                        <i class="fa fa-unlock-alt prefix grey-text"></i>
+                        <input type="password" id="loginpass" required class="password form-control"></input>
+                        <label for="form4">Contraseña</label>
+                      </div>
+                      <button type="button" class="btn btn-primary">Login</button>
+                      <hr>
+                  </div>
+
+                  </form>
+                  <!-- Form -->
+
+                </div>
+
+
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <!-- Content -->
 
     </div>
-    <!-- Mask & flexbox options-->
+    <!-- Content -->
+
+  </div>
+  <!-- Mask & flexbox options-->
 
   </div>
   <!-- Full Page Intro -->
@@ -279,13 +272,13 @@
 
       <!--Section: Main info-->
       <p class="text-center h2 text-warning m-4 ">NOSOTROS</p>
-      <section class="mt-4 wow fadeIn">
+      <section class="mt-4">
 
         <!--Grid row-->
         <div class="row">
 
           <!--Grid column-->
-          <div class="col-md-6 mb-4">
+          <div class="col-md-6 mb-4 wow fadeInLeft">
 
             <img src="img/pic01.jpg" class="img-fluid z-depth-1-half" alt="">
 
@@ -293,7 +286,7 @@
           <!--Grid column-->
 
           <!--Grid column-->
-          <div class="col-md-6 mb-0 d-flex align-items-center flex-wrap">
+          <div class="col-md-6 mb-0 d-flex align-items-center flex-wrap wow fadeIn">
 
             <!-- Main heading -->
             <h3 class="h4 text-center mb-2 ">PUEDES ESTAR EN CUALQUIER PARTE DE LA CIUDAD</h3>
@@ -310,13 +303,13 @@
       </section>
       <hr>
 
-      <section class="mt-4 wow fadeIn ">
+      <section class="mt-4">
 
         <!--Grid row-->
-        <div class="row flex-row-reverse">
+        <div class="row flex-row-reverse ">
 
           <!--Grid column-->
-          <div class="col-md-6 mb-4">
+          <div class="col-md-6 mb-4 wow fadeInRight">
 
             <img src="img/pic02.jpg" class="img-fluid z-depth-1-half" alt="">
 
@@ -324,7 +317,7 @@
           <!--Grid column-->
 
           <!--Grid column-->
-          <div class="col-md-6 mb-0 d-flex align-items-center flex-wrap">
+          <div class="col-md-6 mb-0 d-flex align-items-center flex-wrap wow fadeIn">
 
             <!-- Main heading -->
             <h3 class="h4 text-center mb-2 ">PUEDES VER DONDE VIENE TU AUTOBUS</h3>
@@ -347,7 +340,7 @@
         <div class="row">
 
           <!--Grid column-->
-          <div class="col-md-6 mb-4">
+          <div class="col-md-6 mb-4 wow fadeInLeft">
 
             <img src="img/pic03.jpg" class="img-fluid z-depth-1-half" alt="">
 
@@ -359,7 +352,8 @@
 
             <!-- Main heading -->
             <h3 class="h4 text-center mb-2 ">MÁS INFORMACIÓN DEL AUTOBUS</h3>
-            <p class="h5 dark-grey-text">Podras ver otro tipo de información como el numero de pasajeros, con el fin de que no hagas una espera improductiva de un autobus con cupo lleno.</p>
+            <p class="h5 dark-grey-text">Podras ver otro tipo de información como el numero de pasajeros, con el fin de que no hagas una espera improductiva
+              de un autobus con cupo lleno.</p>
             <p>Y otros datos como: Temperatura, humedad y velocidad aproximada</p>
             <!-- Main heading -->
             <hr>
@@ -374,7 +368,7 @@
       <hr>
       <!--Section: Main info-->
 
-  
+
 
 
 
@@ -410,8 +404,7 @@
               </div>
               <div class="col-10">
                 <h6 class="feature-title">Geolocalización</h6>
-                <p class="dark-grey-text">Si no conoces la ciudad, solo activa el GPS de tu móvil
-                   y podras saber en que punto te encuentras.
+                <p class="dark-grey-text">Si no conoces la ciudad, solo activa el GPS de tu móvil y podras saber en que punto te encuentras.
                 </p>
                 <div style="height:15px"></div>
               </div>
@@ -438,9 +431,9 @@
               </div>
               <div class="col-10">
                 <h6 class="feature-title">¿El autobus tiene cupo?</h6>
-                <p class="dark-grey-text">Al sellecionar el autobus de tu interes, puedes ver el numero de pasajeros.
-                    Asi sabrás si el cupo esta lleno o aun hay sillas disponibles
-                  </p>
+                <p class="dark-grey-text">Al sellecionar el autobus de tu interes, puedes ver el numero de pasajeros. Asi sabrás si el cupo esta lleno
+                  o aun hay sillas disponibles
+                </p>
                 <div style="height:15px"></div>
               </div>
             </div>
@@ -476,9 +469,9 @@
                 <i class="fa fa-check-circle fa-2x indigo-text"></i>
               </div>
               <div class="col-10">
-                  <h6 class="feature-title">La ruta más conveniente</h6>
-                  <p class="grey-text">MOVEPOPAYÁN te muestra la ruta más cercana y conveniente para que tu la puedas tomar si asi lo deseas.
-                    </p>
+                <h6 class="feature-title">La ruta más conveniente</h6>
+                <p class="grey-text">MOVEPOPAYÁN te muestra la ruta más cercana y conveniente para que tu la puedas tomar si asi lo deseas.
+                </p>
                 <div style="height:15px"></div>
               </div>
             </div>
@@ -490,8 +483,8 @@
                 <i class="fa fa-check-circle fa-2x indigo-text"></i>
               </div>
               <div class="col-10">
-                <h6 class="feature-title"></h6>
-                <p class="grey-text">.
+                <h6 class="feature-title">El momento preciso</h6>
+                <p class="grey-text">Toma tu autobus autobus en el momento preciso, y evita los largos minutos de espera
                 </p>
                 <div style="height:15px"></div>
               </div>
@@ -504,8 +497,8 @@
                 <i class="fa fa-check-circle fa-2x indigo-text"></i>
               </div>
               <div class="col-10">
-                <h6 class="feature-title"></h6>
-                <p class="grey-text">U</p>
+                <h6 class="feature-title">Haz de tu ciudad una ciudad inteligente</h6>
+                <p class="grey-text">Apuntate y sumate a la comunidad de personas que quiere vivir en un mundo mejor</p>
                 <div style="height:15px"></div>
               </div>
             </div>
@@ -530,25 +523,25 @@
   <!--Main layout-->
 
   <!--Footer-->
-  <footer class="page-footer text-center font-small mt-4 wow fadeIn">
+  <footer class="page-footer text-center font-small mt-4 wow fadeIn container-fluid">
 
 
 
     <hr class="my-4">
 
     <!-- Social icons -->
-    <div class="pb-4 row" >
+    <div class="pb-4 row">
       <p class="col-12 h4">Developers</p>
       <div class="col-12 col-md-4">
         <p>Rafael Alejandro Belalcázar Burbano</p>
         <p>Edinson David Leon Chilito</p>
       </div>
       <div class="col-12 col-md-4">
-          <p>Israel Andres Muñoz Hinestrosa</p>
-          <p>Jhonatan Tobar</p>
+        <p>Israel Andres Muñoz Hinestrosa</p>
+        <p>Jhonatan Tobar</p>
       </div>
       <div class="col-12 col-md-4">
-        Luis Felipe Bastidas Lopez
+        Luis Felipe Bastidas Torres
       </div>
 
     </div>

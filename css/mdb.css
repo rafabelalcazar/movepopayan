@@ -1364,7 +1364,7 @@ button.bg-secondary:focus {
 a.bg-dark:hover, a.bg-dark:focus,
 button.bg-dark:hover,
 button.bg-dark:focus {
-  background-color: #080808 !important; }
+  background-color: #666666 !important; }
 
 .border-dark {
   border-color: #212121 !important; }

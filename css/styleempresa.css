@@ -23,6 +23,10 @@
 
   }
 
+  .p-content{
+    padding-top: 1rem;
+  }
+
 @media (min-width: 1200px) {
   .navbar,
   .page-footer,
@@ -35,5 +39,9 @@
    }
 
 @media (max-width: 1199.98px) {
+  .p-content{
+    padding-top: 5rem;
+  }
   .sidebar-fixed {
     display: none; } }
+

@@ -9,10 +9,6 @@ if (!$conexion){//Solo si no se conect? a la Bd
   echo "Error al conectar a la Base de datos";
   exit();
 
-}
-else { echo "conectado"; 
-
-//$conexion=mysqli_connect('localhost','root','','ultima');
 }?>
 
 

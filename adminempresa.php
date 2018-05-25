@@ -145,7 +145,7 @@
                         <div class="card-body">
 
                             <div class="text-center">
-                                <button id="trazar" disabled="true">¡Traza la ruta!</button>&ensp;
+                                <button class="btn btn-indigo" id="trazar" disabled="true">¡Traza la ruta!</button>&ensp;
                             </div>
                             
                             <!--Google map-->

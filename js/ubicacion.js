@@ -9,12 +9,27 @@ var marker;
 var pos;
 var image;
 var map;
-var contador = 0;
+var contador;
+var iconoBusesito = { url: 'img/busmarker.svg' };
+var parqueCaldas = { lat: 2.440985, lng: -76.606434 };
+
 function initMap() {
 
   map = new google.maps.Map(document.getElementById('map'), {
-    center: { lat: 2.4466152, lng: -76.5981539 },
-    zoom: 14.5,
+    //center: { lat: 2.4466152, lng: -76.5981539 },
+    center: parqueCaldas,
+    zoom: 15,
+    /* Nuevas opciones para manejo de controles sobre el mapa. */
+    //panControl: false,
+    //mapTypeControl: false,
+    // streetViewControl: false, Darle más opciones
+    // fullscreenControl: false,
+    zoomControl: true,
+    //noClear: true,
+    zoomControlOptions: {
+      position: google.maps.ControlPosition.TOP_LEFT
+    },
+    //mapTypeId: 'roadmap',
     styles: [
       {
         "elementType": "geometry",
@@ -240,42 +255,17 @@ function initMap() {
       }
     ]
   });
+  //var infoWindow = new google.maps.InfoWindow({ map: map });
 
-  var infoWindow = new google.maps.InfoWindow({ map: map });
-
-  // Try HTML5 geolocation.
+  /****************** GEOLOCALIZACIÓN ******************/
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function (position) {
       pos = {
         lat: position.coords.latitude,
         lng: position.coords.longitude,
-
       };
-
-      image = {
-        url: 'img/marker-b.svg',
-        // This marker is 20 pixels wide by 32 pixels high.
-        size: new google.maps.Size(30, 30),
-        // The origin for this image is (0, 0).
-        origin: new google.maps.Point(0, 0),
-        // The anchor for this image is the base of the flagpole at (0, 32).
-        anchor: new google.maps.Point(15, 15),
-        scaledSize: new google.maps.Size(30, 30)
-      };
-
-      marker = new google.maps.Marker({
-        position: pos,
-        map: map,
-        icon: image,
-        title: 'Mi ubicación',
-        animation: google.maps.Animation.DROP,
-      });
-
-
+      contador = 0;
       
-
-      infoWindow.setPosition(pos);
-      infoWindow.setContent('Estoy aquí');
       map.setCenter(pos);
     },
 
@@ -292,37 +282,90 @@ setInterval(refreshMarker, 5000);
 
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   infoWindow.setPosition(pos);
-  alert("Por favor vaya a configuraciones y encienda su GPS");
-  alert("Luego recargue la página");
+  alert("Por favor vaya a configuraciones y encienda su GPS, luego recargue la página.");
   infoWindow.setContent(browserHasGeolocation ?
     'Error: The Geolocation service failed.' :
     'Error: Your browser doesn\'t support geolocation.');
 }
 
 
-
 function refreshMarker() {
   if (navigator.geolocation) {
-    marker.setMap(null);
+    /* Comprueba si hay un marcador. Si lo hay, lo elimina. */
+    if (marker != null) {
+      marker.setMap(null);
+      marker = null;
+    }
+
+    contador++; // Contador para ver cantidad de actualizaciones del marcador.
+
+    /* Extrae -en la variable pos- la latitud, lognitud, velocidad y precición de medida de la Geolocation API */
     navigator.geolocation.getCurrentPosition(function (position) {
       pos = {
         lat: position.coords.latitude,
         lng: position.coords.longitude,
-
+        speed: position.coords.speed,
+        acc: position.coords.accuracy
       };
+    });
 
-      marker = new google.maps.Marker({
-        position: pos,
-        map: map,
-        icon: image,
-        title: 'Mi ubicación',
+    var image = {
+      url: 'img/busmarker.svg',
+      // This marker is 20 pixels wide by 32 pixels high.
+      size: new google.maps.Size(30, 30),
+      origin: new google.maps.Point(0, 0),
+      anchor: new google.maps.Point(15, 15),
+      scaledSize: new google.maps.Size(30, 30)
+    };
+
+    /* Crea marcador */
+    marker = new google.maps.Marker({
+      //position: pos,
+      position: {
+        lat: pos.lat,
+        lng: pos.lng
+      },
+      map: map,
+      draggable: false,
+      icon: image,
+      title: '1',
+    });
+
+    /* Evento click. Ventana de Información al darle Click al Marcador */
+    marker.addListener('click', function () {
+      //posicionMarker = marker.getPosition();
+      var markerString = '<div class="infoWindow"><p>Latitud: ' + pos.lat + ',<br>Longitud:' + pos.lng + ',<br>Velocidad: ' + pos.speed + ',<br>Conteo: ' + contador + ',<br>Accuracy: ' + pos.acc + '</div>';
+      var markerInfoWindow = new google.maps.InfoWindow({
+        content: markerString,
+        maxWidth: 800
       });
-      // marker.setMap(null);
+      markerInfoWindow.open(map, marker);
+      setTimeout(function () {
+        markerInfoWindow.setMap(null);
+      }, 1500);
+    });
 
-    })
+    /* Ventana de Información al darle Click al Marcador */
+    /*marker.addListener('click'/'dragend''mouseover'/, function () {
+      toggleBounce();
+    });*/
   }
+  /* Imprime en consola */
   console.log(pos)
+  console.log(contador)
 }
 
+/* Función ToggleBounce. Actualmente no está implementada en ningún marcador. */
+function toggleBounce() {
+  if (marker.getAnimation() != null) {
+    marker.setAnimation(null);
+  }
+  else {
+    marker.setAnimation(google.maps.Animation.BOUNCE);
+    setTimeout(function () {
+      marker.setAnimation(null);
+    }, 500);
+  }
+}
 
 

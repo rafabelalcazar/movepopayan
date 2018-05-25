@@ -8,17 +8,8 @@
   
     #map {
       height: 100%;
-      margin-top: 4.3rem;
+      margin-top: 2.5rem;
     }
-
-    /* Ajustar mapa */
-    @media (max-width: 776px) {
-      #map {
-        height: 100%; 
-        margin-top: 3.5rem;
-
-      } 
-      }
     /* Estilos mapa fin */
       /*Estilos Mapa inicio */
       /* Always set the map height explicitly to define the size of the div

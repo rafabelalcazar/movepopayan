@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Administrador Empresa</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+        crossorigin="anonymous">
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="css/mdb.min.css" rel="stylesheet">
+    <!-- Your custom styles (optional) -->
+    <link href="css/styleempresa.css" rel="stylesheet">
+    <!-- Estilos de Mapa -->
+    <link rel="stylesheet" href="css/stylemap.css">
+</head>
+
+<body class="grey lighten-3">
+
+    <!--Main Navigation-->
+    <header>
+
+        <!-- Navbar -->
+        <nav class="navbar fixed-top navbar-expand-lg bg-dark navbar-light white scrolling-navbar">
+            <div class="container-fluid">
+
+                <!-- Brand -->
+                <a class="navbar-brand waves-effect" href="index.html">
+                    <i class="fab fa-accusoft text-white"></i>
+                    <strong class="text-white">MOVEPOPAYÁN</strong>
+                </a>
+
+                <!-- Collapse -->
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fas fa-bars text-white"></i>
+                </button>
+
+                <!-- Links -->
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                    <!-- Left -->
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item nav-item-over">
+                            <a class="nav-link waves-effect text-white" href="#">Tablas
+                                <span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+                        <li class="nav-item nav-item-over">
+                            <a class="nav-link waves-effect text-white" href="#">Mapa</a>
+                        </li>
+                        <li class="nav-item nav-item-over">
+                            <a class="nav-link waves-effect text-white" href="#">Conductores</a>
+                        </li>
+                        <li class="nav-item nav-item-over">
+                            <a class="nav-link waves-effect text-white" href="#">Crear rutas</a>
+                        </li>
+                        <li class="nav-item nav-item-over">
+                            <a class="nav-link waves-effect text-white" href="#">Autobus</a>
+                        </li>
+                        <li class="nav-item nav-item-over">
+                            <a class="nav-link waves-effect text-white" href="#">Reportes</a>
+                        </li>
+                    </ul>
+
+                    <!-- Right -->
+                    <ul class="navbar-nav nav-flex-icons">
+                        <li class="nav-item">
+                            <p class="btn-sm btn d-none d-md-block btn-primary">
+                                <!-- Aqui va el nombre de usuario maestro -->
+                                Username
+                            </p>
+                        </li>
+                        <li class="nav-item">
+                            <a href="index.html" class="nav-link btn-sm btn rounded btn-info">
+                                Cerrar sesión
+                            </a>
+                        </li>
+                    </ul>
+
+                </div>
+
+            </div>
+        </nav>
+        <!-- Navbar -->
+
+        <!-- Sidebar -->
+        <div class="sidebar-fixed position-fixed bg-dark">
+
+            <a class="waves-effect m-0 justify-content-center d-flex">
+                <h1 class="text-white bg-primary waves-circle m-4">
+                    <i class="fas fa-camera-retro"></i>
+
+                    <!-- <img src="" class="img-fluid" alt="foto en futuras actualizaciones"> -->
+                </h1>
+            </a>
+
+            <div class="list-group list-group-flush">
+                <a href="#" class=" disabled list-group-item list-group-item-action waves-effect nav-item-over  bg-dark text-white">
+                    <i class="fa fa-user mr-3"></i>Perfil</a>
+                <a href="#" class=" list-group-item list-group-item-action waves-effect bg-dark  nav-item-over text-white">
+                    <i class="fa fa-table mr-3"></i>Tablas</a>
+                <a href="#" class=" list-group-item list-group-item-action waves-effect bg-dark  nav-item-over text-white">
+                    <i class="fa fa-map mr-3"></i>Mapa</a>
+                <a href="#" class=" list-group-item list-group-item-action waves-effect bg-dark  nav-item-over text-white" data-toggle="modal"
+                    data-target="#modalConductores">
+                    <i class="fas fa-user-friends mr-3"></i>Conductores</a>
+                <a href="#" class=" list-group-item list-group-item-action waves-effect bg-dark  nav-item-over text-white">
+                    <i class="fas fa-road mr-3"></i>Crear rutas</a>
+                <a href="#" class=" list-group-item list-group-item-action waves-effect bg-dark  nav-item-over text-white">
+                    <i class="fas fa-bus mr-3"></i>Autobus</a>
+                <a href="#" class=" list-group-item list-group-item-action waves-effect bg-dark  nav-item-over text-white">
+                    <i class="fas fa-chart-area mr-3"></i>Reportes</a>
+                <a href="#" class=" disabled list-group-item list-group-item-action waves-effect nav-item-over  bg-dark text-white">
+                    <i class="fas fa-coins  mr-3"></i>Facturación</a>
+            </div>
+
+        </div>
+        <!-- Sidebar -->
+
+    </header>
+    <!--Main Navigation-->
+
+    <!--Main layout-->
+    <main class="mx-lg-5 p-content">
+        <div class="container-fluid">
+            <!--Grid row-->
+            <div class="row wow fadeIn">
+
+                <!--Grid column-->
+                <div class="col-md-12 mb-4">
+
+                    <!--Card-->
+                    <div class="card">
+
+                        <!--Card content-->
+                        <div class="card-body">
+                            <h1 class="btn btn-outline-primary d-flex justify-content-center text-center">Tabla de rutas</h1>
+
+                            <!-- Table  -->
+                            <table class="table table-hover text-center table-sm table-responsive-sm">
+                                <!-- Table head -->
+                                <thead class="blue-grey lighten-4">
+                                    <tr>
+                                        <th>Vehiculo</th>
+                                        <th>Fecha</th>
+                                        <th>Hora</th>
+                                        <th>Temperatura</th>
+                                        <th>Humedad</th>
+                                        <th>Up pass</th>
+                                        <th>Down pass</th>
+                                    </tr>
+                                </thead>
+                                <!-- Table head -->
+
+                                <!-- Table body -->
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">1</th>
+                                        <td>Cell 1</td>
+                                        <td>Cell 2</td>
+                                        <td>Cell 3</td>
+                                        <td>dfgh</td>
+                                        <td>dfg</td>
+                                        <td>dfg</td>
+                                    </tr>
+
+                                </tbody>
+                                <!-- Table body -->
+                            </table>
+                            <!-- Table  -->
+
+                        </div>
+
+                    </div>
+                    <!--/.Card-->
+
+                </div>
+                <!--Grid column-->
+
+
+            </div>
+            <!--Grid row-->
+
+            <!--Grid row-->
+            <div class="row wow fadeIn">
+
+                <!--Grid column-->
+                <div class="col-md-12 mb-4">
+
+                    <!--Card-->
+                    <div class="card">
+
+                        <!-- Card header -->
+                        <div class="card-header">Ver autobuses en mapa</div>
+
+                        <!--Card content-->
+                        <div class="card-body">
+
+                            <!--Google map-->
+                            <div id="map" class="z-depth-1" style="height: 500px"></div>
+
+                        </div>
+
+                    </div>
+                    <!--/.Card-->
+
+                </div>
+                <!--Grid column-->
+
+                <!--Grid column-->
+                <div class="col-md-12 mb-4">
+
+                    <!--Card-->
+                    <div class="card">
+
+                        <!--Section: Modals-->
+                        <section>
+                            <!--Modal Large para conductores-->
+                            <div class="modal fade" id="modalConductores" tabindex="-7" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-lg modal-notify modal-info" role="document">
+                                    <!--Content-->
+                                    <div class="modal-content">
+                                        <!--Header-->
+                                        <div class="modal-header">
+                                            <p class="heading lead">Gestion de conductores</p>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true" class="white-text">&times;</span>
+                                            </button>
+                                        </div>
+
+                                        <!--Body-->
+                                        <div class="modal-body mb-2">
+                                            <div class="text-center">
+                                                <i class="fa fa-check fa-4x m-0 p-0 animated rotateIn"></i>
+                                            </div>
+                                            <!--Card-->
+                                            <div class="card">
+                                                <!--Card content-->
+                                                <div class="card-body">
+                                                    <!-- Form -->
+                                                    <form id="form">
+                                                        <!-- Heading -->
+                                                        <h3 class="dark-grey-text text-center">
+                                                            <strong>Conductores</strong>
+                                                        </h3>
+                                                        <hr>
+                                                        <div class="md-form">
+                                                            <i class="fa fa-user prefix grey-text"></i>
+                                                            <input type="text" id="formNameDriver" class="form-control" required autofocus autocomplete>
+                                                            <label for="form1">Nombres</label>
+                                                        </div>
+                                                        <div class="md-form">
+                                                            <i class="fa fa-user prefix grey-text"></i>
+                                                            <input type="text" id="formLastNameDriver" class="form-control" required>
+                                                            <label for="form2">Apellidos</label>
+                                                        </div>
+                                                        <div class="md-form">
+                                                            <i class="fas fa-bus prefix grey-text"></i>
+                                                            <input type="number" id="formBusDriver" class="form-control" required min="1" max="3000">
+                                                            <label for="form3">Vehiculo Nº</label>
+                                                        </div>
+
+
+                                                        <div class="text-center">
+                                                            <fieldset class="form-check">
+                                                                <input type="checkbox" class="form-check-input" id="checkbox1" required>
+                                                                <label for="checkbox1" class="form-check-label dark-grey-text disabled required">Conductor Activo</label>
+                                                            </fieldset>
+                                                            <button class="btn btn-indigo" type="submit">Registrar</button>
+                                                            <hr>
+                                                            <!-- Tabla de gestion de conductores -->
+                                                            <!--Grid row-->
+                                                            <div class="row wow fadeIn">
+
+                                                                <!--Grid column-->
+                                                                <div class="col-md-12 mb-4">
+
+                                                                    <!--Card-->
+                                                                    <div class="card">
+
+                                                                        <!--Card content-->
+                                                                        <div class="card-body">
+                                                                            <h1 class="btn btn-outline-primary d-flex justify-content-center text-center">Editar Conductores</h1>
+                                                                            <!-- Table  -->
+                                                                            <table class="table table-hover text-center table-sm table-responsive-sm">
+                                                                                <!-- Table head -->
+                                                                                <thead class="blue-grey lighten-4">
+                                                                                    <tr>
+                                                                                        <th>Id</th>
+                                                                                        <th>Nombres</th>
+                                                                                        <th>Apelidos</th>
+                                                                                        <th>Temperatura</th>
+                                                                                        <th>AutoAsignado</th>
+                                                                                        <th>Estado</th>
+                                                                                        <th>Editar</th>
+                                                                                    </tr>
+                                                                                </thead>
+                                                                                <!-- Table head -->
+
+                                                                                <!-- Table body -->
+                                                                                <tbody>
+                                                                                    <tr>
+                                                                                        <th scope="row">1</th>
+                                                                                        <td>Cell 1</td>
+                                                                                        <td>Cell 2</td>
+                                                                                        <td>Cell 3</td>
+                                                                                        <td>dfgh</td>
+                                                                                        <td>dfg</td>
+                                                                                        <td>dfg</td>
+                                                                                    </tr>
+
+                                                                                </tbody>
+                                                                                <!-- Table body -->
+                                                                            </table>
+                                                                            <!-- Table  -->
+
+                                                                        </div>
+
+                                                                    </div>
+                                                                    <!--/.Card-->
+
+                                                                </div>
+                                                                <!--Grid column-->
+
+
+                                                            </div>
+                                                            <!--Grid row-->
+
+
+                                                        </div>
+
+                                                    </form>
+                                                    <!-- Form -->
+                                                </div>
+                                            </div>
+                                            <!--/.Card-->
+
+
+
+                                        </div>
+
+                                        <!--Footer-->
+                                        <div class="modal-footer">
+                                            <a role="button" class="btn btn-info">Get it now
+                                                <i class="fa fa-diamond ml-1"></i>
+                                            </a>
+                                            <a role="button" class="btn btn-outline-info waves-effect" data-dismiss="modal">No, thanks</a>
+                                        </div>
+                                    </div>
+                                    <!--/.Content-->
+                                </div>
+                            </div>
+                            <!--Modal Large para conductores-->
+                        </section>
+                        <!--Section: Modals-->
+                    </div>
+                    <!--/.Card-->
+                </div>
+                <!--Grid column-->
+            </div>
+            <!--Grid row-->
+        </div>
+    </main>
+    <!--Main layout-->
+
+    <!--Footer-->
+    <footer class="page-footer text-center font-small primary-color-dark darken-2 mt-4 wow fadeIn container-fluid">
+        <hr class="my-4">
+        <!-- Social icons -->
+        <div class="pb-4 row">
+            <p class="col-12 h4">Developers</p>
+            <div class="col-12 col-md-4">
+                <a class="d-block" href="mailto:rafaelb@unicauca.edu.co">
+                    Rafael Alejandro Belalcázar Burbano
+                </a>
+                <a class="d-block" href="mailto:leoc@unicauca.edu.co">
+                    Edinson David Leon Chilito
+                </a>
+            </div>
+            <div class="col-12 col-md-4">
+                <a class="d-block" href="mailto:misrael@unicauca.edu.co">
+                    Israel Andres Muñoz Hinestrosa
+                </a>
+                <a class="d-block" href="mailto:tjhonatan@unicauca.edu.co">
+                    Jhonatan Alexander Tobar Trujillo
+                </a>
+            </div>
+            <div class="col-12 col-md-4">
+                <a class="d-block" href="mailto:">
+                    Luis Felipe Bastidas Torres
+                </a>
+            </div>
+        </div>
+        <!-- Social icons -->
+
+        <!--Copyright-->
+        <div class="footer-copyright py-3">
+            © 2018 Copyright:
+        </div>
+        <!--/.Copyright-->
+
+    </footer>
+    <!--/.Footer-->
+
+    <!-- SCRIPTS -->
+    <!-- JQuery -->
+    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="js/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="js/mdb.min.js"></script>
+    <!-- Initializations -->
+    <script type="text/javascript">
+        // Animations initialization
+        new WOW().init();
+    </script>
+    <!--Google Maps-->
+    <script src="js/ubicacion.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDofv40C3A72DWtGGWNr3abXR0uA3p5KP4&callback=initMap">
+    </script>
+</body>
+
+</html>

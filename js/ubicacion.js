@@ -25,8 +25,8 @@ function initMap() {
     /* Nuevas opciones para manejo de controles sobre el mapa. */
     //panControl: false,
     //mapTypeControl: false,
-    streetViewControl: false,
-    fullscreenControl: false,
+    // streetViewControl: false, Darle más opciones
+    // fullscreenControl: false,
     zoomControl: true,
     //noClear: true,
     zoomControlOptions: {
@@ -287,6 +287,7 @@ function initMap() {
       polylineOptions: myPolylineOptions,
       panel: document.getElementById('panel-google-directions'),
   });
+  //var infoWindow = new google.maps.InfoWindow({ map: map });
 
   directionsDisplay.setMap(map);
 

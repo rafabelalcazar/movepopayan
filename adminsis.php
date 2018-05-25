@@ -3,7 +3,7 @@
 session_start();
 if (@!$_SESSION['nombre']) {
   header("Location:index.php");
-}elseif ($_SESSION['rol']==3) {
+} elseif ($_SESSION['rol'] == 3) {
   header("Location:usuario.php");
 }
 ?>
@@ -15,7 +15,7 @@ if (@!$_SESSION['nombre']) {
 <!DOCTYPE html>
 <meta charset="utf-8">
 <?php 
- $con = mysqli_connect("localhost","root","","sistransporte") or die ("Error en la conexion");
+$con = mysqli_connect("localhost", "root", "", "sistransporte") or die("Error en la conexion");
 ?>
 
 
@@ -26,11 +26,11 @@ if (@!$_SESSION['nombre']) {
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Importando bootstrap -->
-		<link rel="stylesheet" href="css/bootstrap.min.css">
+       <!-- Bootstrap core CSS -->
+       <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="css/mdb.min.css" rel="stylesheet">
 
-    <!-- Importando Font-Awesome -->
-    <link rel="stylesheet" href="css/font-awesome.min.css">
 
   </head>
 
@@ -43,7 +43,7 @@ if (@!$_SESSION['nombre']) {
       <li class="nav-item text-nowrap">
 
         <a class="nav-link" href="desconectar.php">Cerrar sesión</a>
-        <a href="#">Bienvenido <strong><?php echo $_SESSION['nombre'];?></strong> </a></li>
+        <a href="#">Bienvenido <strong><?php echo $_SESSION['nombre']; ?></strong> </a></li>
 
 
       </li>
@@ -52,7 +52,7 @@ if (@!$_SESSION['nombre']) {
 
 
   <div class="container-fluid p-3 mt-4 bg-dark text-white text-center">
-    <div class="container p-3">
+    <div class="container">
     <form class="form-grop" method="post" action="adminsis.php">
         <h2 class="display-4">ADMINISTRADOR SISTEMA</h2>
 
@@ -63,8 +63,8 @@ if (@!$_SESSION['nombre']) {
         <input class="mt-4 col-md-12 form-control col-12" required type="password" name="contrasena" placeholder="Escriba la contraseña">
 
         <!-- Botones  -->
-        <input class="mt-4 btn btn-primary col-lg-4 text-uppercase col-8" type="submit" name="ingresar" value="registrar">
-        <input class="mt-4 btn btn-secondary col-lg-4 text-uppercase col-8" type="reset" name="ingresar" value="Limpiar"> 
+        <input class="mt-4 btn btn-primary col" type="submit" name="ingresar" value="registrar">
+        <input class="mt-4 btn btn-secondary col" type="reset" name="ingresar" value="Limpiar"> 
     </form>
     </div>
   </div>
@@ -72,28 +72,28 @@ if (@!$_SESSION['nombre']) {
   <div class="container-fluid">
     <div class="container">
     <?php
-       if (isset($_POST['ingresar'])){
+    if (isset($_POST['ingresar'])) {
 
-      	$nombre = $_POST['nombre'];
-      	$apellido = $_POST['apellido'];
+      $nombre = $_POST['nombre'];
+      $apellido = $_POST['apellido'];
       	//$nauto = $_POST['numauto'];
-        $mail = $_POST ['correo'];
-     
-        $contrasena = $_POST ['contrasena'];
+      $mail = $_POST['correo'];
+
+      $contrasena = $_POST['contrasena'];
 
 
 
-      	$insertar = "INSERT INTO login (`nombre`,`apellido`,`user`,`password`, `passadmin`,`rol`, `estado` ) VALUES ('$nombre', '$apellido','$mail', '',md5('$contrasena'), '1','1')";
-      	$ejecutar = mysqli_query($con, $insertar);
+      $insertar = "INSERT INTO login (`nombre`,`apellido`,`user`,`password`, `passadmin`,`rol`, `estado` ) VALUES ('$nombre', '$apellido','$mail', '',md5('$contrasena'), '1','1')";
+      $ejecutar = mysqli_query($con, $insertar);
 
-      	if ($ejecutar) {   
-      		echo "<h2> El Administrador de la empresa se ha ingresado correctamente</h3>";
+      if ($ejecutar) {
+        echo "<h2> El Administrador de la empresa se ha ingresado correctamente</h3>";
       		# code...
-      	}
       }
-      ?>
+    }
+    ?>
 
-      <h4 class="p-4">Ver lista de administradores de empresa</h4>
+      <h4 class="p-4 m-2">Ver lista de administradores de empresa</h4>
       <table class="table table-striped table-bordered table-hover table-sm table-responsiv">
       <thead align= "center">  
         <th>id</th>
@@ -107,22 +107,22 @@ if (@!$_SESSION['nombre']) {
 <?php
 
 $consulta = "SELECT * FROM login where rol='1'";
-$ejecutar = mysqli_query ($con, $consulta);
+$ejecutar = mysqli_query($con, $consulta);
 
-$i=0;
- 
-
-while ($fila = mysqli_fetch_array($ejecutar)){
- $id = $fila['id'];
- $nombre = $fila ['nombre'];
- $apellido = $fila ['apellido'];
- $mail = $fila ['user'];
- $rol = $fila ['rol'];
- $contrasena = $fila ['passadmin'];
+$i = 0;
 
 
- $i++;
-?>
+while ($fila = mysqli_fetch_array($ejecutar)) {
+  $id = $fila['id'];
+  $nombre = $fila['nombre'];
+  $apellido = $fila['apellido'];
+  $mail = $fila['user'];
+  $rol = $fila['rol'];
+  $contrasena = $fila['passadmin'];
+
+
+  $i++;
+  ?>
 
 
 	<tr align= "center">
@@ -141,7 +141,7 @@ while ($fila = mysqli_fetch_array($ejecutar)){
 } ?>
 <?php 
 if (isset($_GET['editar1'])) {
-	include ("editar1.php");
+  include("editar1.php");
 	# code...
 }
 ?>

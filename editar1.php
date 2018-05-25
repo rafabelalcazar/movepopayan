@@ -17,35 +17,57 @@ if (isset($_GET['editar1'])) {
 }
 ?>
  <br>
+<div class="card">
+	<div class="card-body">
+		<form class="my-4" method="post" action="">
+			
+			<div class="md-form">
+				<label for="<?php echo $nombre; ?>">Nombre</label>
+				<input class="form-control" type="text" name="nombre" value="">
+		   </div>	
+		   <div class="md-form">
+			   <label for="<?php echo $apellido; ?>">apellido</label>		
+			   <input class="form-control" type="text" name="apellido" value="">
+		   </div>
+		   <div class="md-form">
+			   <label for="<?php echo $apellido; ?>">Mail</label>	
+			   <input class="form-control" type="text" name="correo" value="">
+		   </div>
+			   
+		   <div class="md-form">
+			   <label for="<?php echo $apellido; ?>">Rol</label>	
+			   <input class="form-control" type="text" name="rol" value="">
+		   </div>
+		   <div class="md-form">
+			   <label for="<?php echo $apellido; ?>">Contraseña</label>	
+			   <input class="form-control" type="text" name="contrasena" value="">
+		   </div>
+	   
+	   
+		   <input class="btn btn-primary m-2" type="submit" name="actualizar" value="Actualizar Datos del administrador de la empresa">
+	   
+	   
+		</form>
 
- <form class="my-4" method="post" action="">
- 	<div class="md-form">
-		 <label for="<?php echo $nombre; ?>">Nombre</label>
-		 <input class="form-control" type="text" name="nombre" value="<?php echo $nombre; ?>">
-	</div>	
-	<div class="md-form">
-		<label for="<?php echo $apellido; ?>">apellido</label>		
-		<input class="form-control" type="text" name="apellido" value="<?php echo $apellido; ?>">
 	</div>
-	<div class="md-form">
-		<label for="<?php echo $apellido; ?>">Mail</label>	
-		<input class="form-control" type="text" name="correo" value="<?php echo $mail; ?>">
-	</div>
-		
-	<div class="md-form">
-		<label for="<?php echo $apellido; ?>">Rol</label>	
-		<input class="form-control" type="text" name="rol" value="<?php echo $rol; ?>">
-	</div>
-	<div class="md-form">
-		<label for="<?php echo $apellido; ?>">Contraseña</label>	
-		<input class="form-control" type="text" name="contrasena" value="<?php echo $contrasena; ?>">
-	</div>
-
-
-    <input class="btn btn-primary m-2" type="submit" name="actualizar" value="Actualizar Datos del administrador de la empresa">
-
-
- </form>
+</div>
+ <!-- JQuery -->
+ <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="js/popper.min.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="js/mdb.min.js"></script>
+  <!-- Initializations -->
+  <script type="text/javascript">
+    // Animations initialization
+    new WOW().init();
+  </script>
+  <script src="js/smooth-scroll.polyfills.min.js"></script>
+  <script>
+    var scroll = new SmoothScroll('a[href*="#"]');
+  </script>
 
  <?php
 if (isset($_POST['actualizar'])) {

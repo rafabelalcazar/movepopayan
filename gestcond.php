@@ -20,7 +20,7 @@ if (@!$_SESSION['nombre']) {
 		<meta http-equiv="X-UA-Compatible" content="ie=edge">
 
 		<!-- Importando bootstrap -->
-		<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/bootstrap.min.css">
 
 		<!-- Importando floating-labels para formularios -->
 		<!-- <link href="assets/css/floating-labels.css" rel="stylesheet"> -->

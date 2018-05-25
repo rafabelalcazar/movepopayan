@@ -76,7 +76,7 @@
                             </p>
                         </li>
                         <li class="nav-item">
-                            <a href="index.html" class="nav-link btn-sm btn rounded btn-info">
+                            <a href="index.php" class="nav-link btn-sm btn rounded btn-info">
                                 Cerrar sesión
                             </a>
                         </li>
@@ -106,7 +106,7 @@
                     <i class="fa fa-table mr-3"></i>Tablas</a>
                 <a href="#mapcard" class=" list-group-item list-group-item-action waves-effect bg-dark  nav-item-over text-white">
                     <i class="fa fa-map mr-3"></i>Mapa</a>
-                <a href="#" class=" list-group-item list-group-item-action waves-effect bg-dark  nav-item-over text-white" data-toggle="modal"
+                <a href="gestcond.php" class=" list-group-item list-group-item-action waves-effect bg-dark  nav-item-over text-white" data-toggle="modal"
                     data-target="#modalConductores">
                     <i class="fas fa-user-friends mr-3"></i>Conductores</a>
                 <a href="#" class=" list-group-item list-group-item-action waves-effect bg-dark  nav-item-over text-white">

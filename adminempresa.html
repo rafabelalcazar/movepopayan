@@ -46,15 +46,15 @@
                     <!-- Left -->
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item nav-item-over">
-                            <a class="nav-link waves-effect text-white" href="#">Tablas
+                            <a class="nav-link waves-effect text-white" href="#tabla">Tablas
                                 <span class="sr-only">(current)</span>
                             </a>
                         </li>
                         <li class="nav-item nav-item-over">
-                            <a class="nav-link waves-effect text-white" href="#">Mapa</a>
+                            <a class="nav-link waves-effect text-white" href="#mapcard">Mapa</a>
                         </li>
                         <li class="nav-item nav-item-over">
-                            <a class="nav-link waves-effect text-white" href="#">Conductores</a>
+                            <a class="nav-link waves-effect text-white" href="#" data-toggle="modal" data-target="#modalConductores">Conductores</a>
                         </li>
                         <li class="nav-item nav-item-over">
                             <a class="nav-link waves-effect text-white" href="#">Crear rutas</a>
@@ -102,9 +102,9 @@
             <div class="list-group list-group-flush">
                 <a href="#" class=" disabled list-group-item list-group-item-action waves-effect nav-item-over  bg-dark text-white">
                     <i class="fa fa-user mr-3"></i>Perfil</a>
-                <a href="#" class=" list-group-item list-group-item-action waves-effect bg-dark  nav-item-over text-white">
+                <a href="#tabla" class=" list-group-item list-group-item-action waves-effect bg-dark  nav-item-over text-white">
                     <i class="fa fa-table mr-3"></i>Tablas</a>
-                <a href="#" class=" list-group-item list-group-item-action waves-effect bg-dark  nav-item-over text-white">
+                <a href="#mapcard" class=" list-group-item list-group-item-action waves-effect bg-dark  nav-item-over text-white">
                     <i class="fa fa-map mr-3"></i>Mapa</a>
                 <a href="#" class=" list-group-item list-group-item-action waves-effect bg-dark  nav-item-over text-white" data-toggle="modal"
                     data-target="#modalConductores">
@@ -128,66 +128,9 @@
     <!--Main layout-->
     <main class="mx-lg-5 p-content">
         <div class="container-fluid">
-            <!--Grid row-->
-            <div class="row wow fadeIn">
-
-                <!--Grid column-->
-                <div class="col-md-12 mb-4">
-
-                    <!--Card-->
-                    <div class="card">
-
-                        <!--Card content-->
-                        <div class="card-body">
-                            <h1 class="btn btn-outline-primary d-flex justify-content-center text-center">Tabla de rutas</h1>
-
-                            <!-- Table  -->
-                            <table class="table table-hover text-center table-sm table-responsive-sm">
-                                <!-- Table head -->
-                                <thead class="blue-grey lighten-4">
-                                    <tr>
-                                        <th>Vehiculo</th>
-                                        <th>Fecha</th>
-                                        <th>Hora</th>
-                                        <th>Temperatura</th>
-                                        <th>Humedad</th>
-                                        <th>Up pass</th>
-                                        <th>Down pass</th>
-                                    </tr>
-                                </thead>
-                                <!-- Table head -->
-
-                                <!-- Table body -->
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>Cell 1</td>
-                                        <td>Cell 2</td>
-                                        <td>Cell 3</td>
-                                        <td>dfgh</td>
-                                        <td>dfg</td>
-                                        <td>dfg</td>
-                                    </tr>
-
-                                </tbody>
-                                <!-- Table body -->
-                            </table>
-                            <!-- Table  -->
-
-                        </div>
-
-                    </div>
-                    <!--/.Card-->
-
-                </div>
-                <!--Grid column-->
-
-
-            </div>
-            <!--Grid row-->
 
             <!--Grid row-->
-            <div class="row wow fadeIn">
+            <div id="mapcard" class="row wow fadeIn">
 
                 <!--Grid column-->
                 <div class="col-md-12 mb-4">
@@ -203,6 +146,121 @@
 
                             <!--Google map-->
                             <div id="map" class="z-depth-1" style="height: 500px"></div>
+
+                            <!-- Tabla de rutas -->
+                            <div class="row wow fadeInRight ">
+
+                                <!--Grid column-->
+                                <div class="col-md-12 my-4">
+
+                                    <!--Card-->
+                                    <div class="card">
+
+                                        <!--Card content-->
+                                        <div class="card-body">
+                                            <h1 class="btn btn-outline-primary d-flex justify-content-center text-center">Tabla de rutas</h1>
+
+                                            <!-- Table  -->
+                                            <table class="table table-hover text-center table-sm table-responsive-sm">
+                                                <!-- Table head -->
+                                                <thead class="blue-grey lighten-4">
+                                                    <tr>
+                                                        <th>Id</th>
+                                                        <th>Nombre</th>
+                                                        <th>Descripción</th>
+                                                        <th>Fecha</th>
+                                                        <th>Otro</th>
+
+                                                    </tr>
+                                                </thead>
+                                                <!-- Table head -->
+
+                                                <!-- Table body -->
+                                                <tbody>
+                                                    <tr>
+                                                        <th scope="row">1</th>
+                                                        <td>Cell 1</td>
+                                                        <td>Cell 2</td>
+                                                        <td>Cell 3</td>
+                                                        <td>dfgh</td>
+                                                    </tr>
+                                                </tbody>
+                                                <!-- Table body -->
+                                            </table>
+                                            <!-- Table  -->
+
+                                        </div>
+
+                                    </div>
+                                    <!--/.Card-->
+
+                                </div>
+                                <!--Grid column-->
+
+
+                            </div>
+                            <!-- Fin Tabla rutas -->
+
+                            <!-- Tabla de mediciones -->
+                            <!--Grid row-->
+                            <div class="row wow fadeInLeft">
+
+                                <!--Grid column-->
+                                <div class="col-md-12 mb-4">
+
+                                    <!--Card-->
+                                    <div class="card">
+
+                                        <!--Card content-->
+                                        <div class="card-body">
+                                            <h1 class="btn btn-outline-primary d-flex justify-content-center text-center">Tabla de medidas</h1>
+
+                                            <!-- Table  -->
+                                            <table class="table table-hover text-center table-sm table-responsive-sm">
+                                                <!-- Table head -->
+                                                <thead class="blue-grey lighten-4">
+                                                    <tr>
+                                                        <th>Vehiculo</th>
+                                                        <th>Fecha</th>
+                                                        <th>Hora</th>
+                                                        <th>Temperatura</th>
+                                                        <th>Humedad</th>
+                                                        <th>Up pass</th>
+                                                        <th>Down pass</th>
+                                                    </tr>
+                                                </thead>
+                                                <!-- Table head -->
+
+                                                <!-- Table body -->
+                                                <tbody>
+                                                    <tr>
+                                                        <th scope="row">1</th>
+                                                        <td>Cell 1</td>
+                                                        <td>Cell 2</td>
+                                                        <td>Cell 3</td>
+                                                        <td>dfgh</td>
+                                                        <td>dfg</td>
+                                                        <td>dfg</td>
+                                                    </tr>
+
+                                                </tbody>
+                                                <!-- Table body -->
+                                            </table>
+                                            <!-- Table  -->
+
+                                        </div>
+
+                                    </div>
+                                    <!--/.Card-->
+
+                                </div>
+                                <!--Grid column-->
+
+
+                            </div>
+                            <!--Grid row-->
+                            <!-- Fin Tabla de mediciones -->
+
 
                         </div>
 

@@ -1,29 +1,21 @@
-//Este codigo de pruba lo tome de Google maps.
-//Se ha modificado e zoom para hacer enfasis en la ciudad.
-// Note: This example requires that you consent to location sharing when
-// prompted by your browser. If you see the error "The Geolocation service
-// failed.", it means you probably did not give permission for the browser to
-// locate you.
-
-var marker;
 var pos;
 var image;
 var map;
 var contador;
-var iconoBusesito = { url: 'img/busmarker.svg' };
+var iconoBusesito;
 var parqueCaldas = { lat: 2.440985, lng: -76.606434 };
 
 function initMap() {
-
-  map = new google.maps.Map(document.getElementById('map'), {
+  /* Creación del mapa */
+  var mapOpciones = {
     //center: { lat: 2.4466152, lng: -76.5981539 },
     center: parqueCaldas,
     zoom: 15,
     /* Nuevas opciones para manejo de controles sobre el mapa. */
     //panControl: false,
     //mapTypeControl: false,
-    // streetViewControl: false, Darle más opciones
-    // fullscreenControl: false,
+    streetViewControl: false,
+    fullscreenControl: false,
     zoomControl: true,
     //noClear: true,
     zoomControlOptions: {
@@ -254,52 +246,13 @@ function initMap() {
         ]
       }
     ]
-  });
-  //var infoWindow = new google.maps.InfoWindow({ map: map });
+  };
+  map = new google.maps.Map(document.getElementById('map'), mapOpciones);
 
-  /****************** GEOLOCALIZACIÓN ******************/
+  var infoWindow = new google.maps.InfoWindow({ map: map });
+
+  /* Geolocalización */
   if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(function (position) {
-      pos = {
-        lat: position.coords.latitude,
-        lng: position.coords.longitude,
-      };
-      contador = 0;
-      
-      map.setCenter(pos);
-    },
-
-      function () {
-        handleLocationError(true, infoWindow, map.getCenter());
-      });
-  } else {
-    // Browser doesn't support Geolocation
-    handleLocationError(false, infoWindow, map.getCenter());
-  }
-}
-
-setInterval(refreshMarker, 5000);
-
-function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-  infoWindow.setPosition(pos);
-  alert("Por favor vaya a configuraciones y encienda su GPS, luego recargue la página.");
-  infoWindow.setContent(browserHasGeolocation ?
-    'Error: The Geolocation service failed.' :
-    'Error: Your browser doesn\'t support geolocation.');
-}
-
-
-function refreshMarker() {
-  if (navigator.geolocation) {
-    /* Comprueba si hay un marcador. Si lo hay, lo elimina. */
-    if (marker != null) {
-      marker.setMap(null);
-      marker = null;
-    }
-
-    contador++; // Contador para ver cantidad de actualizaciones del marcador.
-
-    /* Extrae -en la variable pos- la latitud, lognitud, velocidad y precición de medida de la Geolocation API */
     navigator.geolocation.getCurrentPosition(function (position) {
       pos = {
         lat: position.coords.latitude,
@@ -307,65 +260,95 @@ function refreshMarker() {
         speed: position.coords.speed,
         acc: position.coords.accuracy
       };
+      map.setCenter({ lat: pos.lat, lng: pos.lng });
+      map.setZoom(14);
+
+      /* Da diseño al ícono de bus. */
+      iconoBusesito = { url: 'img/busmarker.svg',
+        // This marker is 20 pixels wide by 32 pixels high.
+        size: new google.maps.Size(30, 30),
+        origin: new google.maps.Point(0, 0),
+        anchor: new google.maps.Point(15, 15),
+        scaledSize: new google.maps.Size(30, 30)
+      };
+
+      /* Incicializa el Contador en 0. */
+      contador = 0;
+
+      /* Imprime en consola */
+      console.log(pos)
+
+
+      /* Función Refresh Marker */
+        function refreshMarker() {
+            if (navigator.geolocation) {
+                /* Comprueba si hay un marcador. Si lo hay, lo elimina. */
+                if (marker != null) {
+                    marker.setMap(null);
+                    marker = null;
+                }
+                /* Extrae -en la variable pos- la latitud, lognitud, velocidad y precición de medida de la Geolocation API */
+                navigator.geolocation.getCurrentPosition(function (position) {
+                    pos = {
+                        lat: position.coords.latitude,
+                        lng: position.coords.longitude,
+                        speed: position.coords.speed,
+                        acc: position.coords.accuracy
+                    };
+                });
+
+                /* Crea marcador */
+                marker = new google.maps.Marker({
+                    position: {
+                        lat: pos.lat,
+                        lng: pos.lng
+                    },
+                    map: map,
+                    draggable: false,
+                    icon: iconoBusesito,
+                    title: 'Mi ubicación'
+                });
+                map.setCenter({ lat: pos.lat, lng: pos.lng });
+                map.setZoom(17);
+
+                /* Evento click. Ventana de Información al darle Click al Marcador */
+                marker.addListener('click', function () {
+                    //posicionMarker = marker.getPosition();
+                    var markerString = '<div class="infoWindow"><p>Latitud: ' + pos.lat + ',<br>Longitud:' + pos.lng + ',<br>Velocidad: ' + pos.speed + ',<br>Conteo: ' + contador + ',<br>Accuracy: ' + pos.acc + '</div>';
+                    var markerInfoWindow = new google.maps.InfoWindow({
+                        content: markerString,
+                        maxWidth: 800
+                    });
+                    markerInfoWindow.open(map, marker);
+                    setTimeout(function () {
+                        markerInfoWindow.setMap(null);
+                    }, 2500);
+                });
+            }
+            /* Imprime en consola */
+            console.log(pos)
+            console.log(contador)
+            setTimeout(function () { 
+                var vehId = document.getElementById('numeroVehiculo').value;
+                window.open('https://127.0.0.1/GitHub/movepopayan/conductor.php?numeroVehiculo=' + vehId + '&latitud=' + pos.lat + '&longitud=' + pos.lng, '_self');
+            }, 5000);
+        }
+    },
+    function () {
+      handleLocationError(true, infoWindow, map.getCenter());
     });
 
-    var image = {
-      url: 'img/busmarker.svg',
-      // This marker is 20 pixels wide by 32 pixels high.
-      size: new google.maps.Size(30, 30),
-      origin: new google.maps.Point(0, 0),
-      anchor: new google.maps.Point(15, 15),
-      scaledSize: new google.maps.Size(30, 30)
-    };
-
-    /* Crea marcador */
-    marker = new google.maps.Marker({
-      //position: pos,
-      position: {
-        lat: pos.lat,
-        lng: pos.lng
-      },
-      map: map,
-      draggable: false,
-      icon: image,
-      title: '1',
-    });
-
-    /* Evento click. Ventana de Información al darle Click al Marcador */
-    marker.addListener('click', function () {
-      //posicionMarker = marker.getPosition();
-      var markerString = '<div class="infoWindow"><p>Latitud: ' + pos.lat + ',<br>Longitud:' + pos.lng + ',<br>Velocidad: ' + pos.speed + ',<br>Conteo: ' + contador + ',<br>Accuracy: ' + pos.acc + '</div>';
-      var markerInfoWindow = new google.maps.InfoWindow({
-        content: markerString,
-        maxWidth: 800
-      });
-      markerInfoWindow.open(map, marker);
-      setTimeout(function () {
-        markerInfoWindow.setMap(null);
-      }, 1500);
-    });
-
-    /* Ventana de Información al darle Click al Marcador */
-    /*marker.addListener('click'/'dragend''mouseover'/, function () {
-      toggleBounce();
-    });*/
+  } else {
+    // Browser doesn't support Geolocation
+    handleLocationError(false, infoWindow, map.getCenter());
   }
-  /* Imprime en consola */
-  console.log(pos)
-  console.log(contador)
 }
 
-/* Función ToggleBounce. Actualmente no está implementada en ningún marcador. */
-function toggleBounce() {
-  if (marker.getAnimation() != null) {
-    marker.setAnimation(null);
-  }
-  else {
-    marker.setAnimation(google.maps.Animation.BOUNCE);
-    setTimeout(function () {
-      marker.setAnimation(null);
-    }, 500);
-  }
+function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+  infoWindow.setPosition(pos);
+  alert("Por favor vaya a configuraciones y encienda su GPS.");
+  alert("Recargue la página.");
+  infoWindow.setContent(browserHasGeolocation ?
+    'Error: The Geolocation service failed.' :
+    'Error: Your browser doesn\'t support geolocation.');
 }
-
-

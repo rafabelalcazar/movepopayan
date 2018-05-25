@@ -171,7 +171,7 @@
                                                 $i=0;
                                                 $sql = "SELECT rutId AS ID, rutNombre AS Nombre, rutNombreCorto AS 'Nombre Corto', rutDescripcion AS Descripcion, rutEstado AS Estado, rutFechaCreacion AS FechaCreacion FROM ruta";
                                                 
-                                            /* Ejecuta consulta a la base datos */
+                                                /* Ejecuta consulta a la base datos */
                                                 if ($mbd->multi_query($sql)) {
                                                     do {
                                                         // primero almacenar el conjunto de resultados

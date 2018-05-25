@@ -16,6 +16,15 @@ var map;
 var parqueCaldas = { lat: 2.440985, lng: -76.606434 };
 var radio = 1000; // En Metros
 
+var lat;
+var lng;
+var posicionOrigen;
+var posicionDestino;
+var waypts;
+var pointsArray;
+var parqueCaldas = { lat: 2.440985, lng: -76.606434 };
+var pueblitoPatojo = { lat: 2.44354, lng: -76.6013199 };
+
 function initMap() {
   /* Creación del mapa */
   var mapOpciones = {
@@ -24,9 +33,9 @@ function initMap() {
     zoom: 15,
     /* Nuevas opciones para manejo de controles sobre el mapa. */
     //panControl: false,
-    //mapTypeControl: false,
-    // streetViewControl: false, Darle más opciones
-    // fullscreenControl: false,
+    mapTypeControl: true,
+    streetViewControl: false,
+    fullscreenControl: true,
     zoomControl: true,
     //noClear: true,
     zoomControlOptions: {
@@ -265,96 +274,51 @@ function initMap() {
   /* Directions API. Funciones que permiten trazar las rutas */
   var directionsService = new google.maps.DirectionsService;
 
-  var cursorInfo = "No me puedo mover";
+  var cursorInfo = "¡Hola!";
 
   var markersOpciones = {
-      draggable: false,
+      draggable: true,
       animation: google.maps.Animation.DROP,
       cursor: cursorInfo
   }
 
   var myPolylineOptions = {
-    strokeColor: '#000000',
-    strokeOpacity: 0.8,
+    strokeColor: '#00000F',
+    strokeOpacity: 0.6,
     strokeWeight: 10
   };
 
   var directionsDisplay = new google.maps.DirectionsRenderer({
-      draggable: false,
+      draggable: true,
       map: map,
       markerOptions: markersOpciones,
       suppressPolylines: false,
       polylineOptions: myPolylineOptions,
       panel: document.getElementById('panel-google-directions'),
   });
-  //var infoWindow = new google.maps.InfoWindow({ map: map });
+  var infoWindow = new google.maps.InfoWindow({ map: map });
 
   directionsDisplay.setMap(map);
 
   document.getElementById('trazar').addEventListener('click', function () {
     //alert(posicionOrigen.lat + ', ' + posicionDestino.lng + ', ' + waypts[0].lat);
-    document.getElementById('info-pasos-seguir').innerHTML = '¡Ruta Desplegada!';
+    //document.getElementById('info-pasos-seguir').innerHTML = '¡Ruta Desplegada!';
     calculateAndDisplayRoute(directionsService, directionsDisplay);
+    document.getElementById("editaMarcadores").disabled = false;
   });
 
-  /* Geolocalización */
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(function (position) {
-      pos = {
-        lat: position.coords.latitude,
-        lng: position.coords.longitude,
-        speed: position.coords.speed,
-        acc: position.coords.accuracy
-      };
+  directionsDisplay.addListener('directions_changed', function () {
+    computeTotalDistance(directionsDisplay.getDirections());
+  });
 
-      /* Diseño Icono Marcador */
-      image = {
-        url: 'img/marker-b.svg',
-        // This marker is 20 pixels wide by 32 pixels high.
-        size: new google.maps.Size(30, 30),
-        // The origin for this image is (0, 0).
-        origin: new google.maps.Point(0, 0),
-        // The anchor for this image is the base of the flagpole at (0, 32).
-        anchor: new google.maps.Point(15, 15),
-        scaledSize: new google.maps.Size(30, 30)
-      };
-
-      /* Crea marcador */
-      marker = new google.maps.Marker({
-        position: {
-          lat: pos.lat,
-          lng: pos.lng
-        },
-        map: map,
-        draggable: false,
-        icon: image,
-        animation: google.maps.Animation.DROP,
-        title: 'Estoy Aquí'
-      });
-      
-      /* Efecto al iniciar la página */
-      setTimeout(function () {
-        map.setCenter(pos);
-        map.setZoom(18);
-        toggleBounce();
-        circulo(radio);
-      }, 1000);
-
-      /* Envía las coordenadas de ubicación a cuadros de texto ocultos. */
-      document.getElementsByName("marcadores-text-lat")[0].value = pos.lat;
-      document.getElementsByName("marcadores-text-lng")[0].value = pos.lng;
-      //window.open('https://localhost/GitHub/movepopayan/viajero.php?lat=' + pos.lat + ",lng=" + pos.lng, '_self');
-
-      /* Imprime en consola */
-      console.log(pos)
-    },
-    function () {
-      handleLocationError(true, infoWindow, map.getCenter());
-    });
-  }
-  else {
-    // Browser doesn't support Geolocation
-    handleLocationError(false, infoWindow, map.getCenter());
+  function computeTotalDistance(result) {
+    var total = 0;
+    var myroute = result.routes[0];
+    guardarRuta(result);
+    for (var i = 0; i < myroute.legs.length; i++)
+      total += myroute.legs[i].distance.value;
+    total = total / 1000;
+    document.getElementById('total').innerHTML = total + ' km';
   }
 }
 
@@ -379,62 +343,38 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
   });
 }
 
-/* Función de crear marcadores. /
-function agregaMarkerWay(latitud, longitud, titulo) {
-  var markerWay = new google.maps.Marker({
-    position: {
-      lat: latitud,
-      lng: longitud
-    },
-    map: map,
-    draggable: false,
-    title: titulo
-  });
-  markersWay.push(markerWay);
-}*/
-
-/* Función que lanza error al no poder acceder a la ubicacion del usuario. */
-function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-  infoWindow.setPosition(pos);
-  alert("Por favor vaya a configuraciones y encienda su GPS.");
-  alert("Recargue la página.");
-  infoWindow.setContent(browserHasGeolocation ?
-    'Error: The Geolocation service failed.' :
-    'Error: Your browser doesn\'t support geolocation.');
-}
-
-/* Función para hacer un círculo alrededor de la ubicación. */
-function circulo(radio) {
-  var markerCirculo = new google.maps.Circle({
-    strokeColor: '#FF0000',
-    strokeOpacity: 0.8,
-    strokeWeight: 2,
-    fillColor: '#FF0000',
-    fillOpacity: 0.35,
-    map: map,
-    center: { lat: pos.lat, lng: pos.lng },
-    //center: parqueCaldas,
-    radius: radio
-  });
-  //markerCirculo.setMap(null);
-}
-
-/* Función ToggleBounce. */
-function toggleBounce() {
-  if (marker.getAnimation() != null) {
-    marker.setAnimation(null);
-  }
-  else {
-    marker.setAnimation(google.maps.Animation.BOUNCE);
-    setTimeout(function () {
-      marker.setAnimation(null);
-    }, 2000);
+/* Función que despliega un recuadro de confirmación a la acción de ELIMINAR RUTA. */
+function eliminarConfirmacion() {
+  var opcion = confirm("¿Seguro desea eliminar la ruta?");
+  if (opcion == true) {
+      document.getElementsByName("confirma-eliminar")[0].value = "true";
+  } else {
+      document.getElementsByName("confirma-eliminar")[0].value = "false";
   }
 }
 
-/* Función Ecuéntrame */
-function encuentrame () {
-  map.setCenter(pos);
-  map.setZoom(16);
-  toggleBounce();
+/* Función indispensable para extraer los waypoints de una Ruta modificada en el Mapa. */
+function guardarRuta(result) {
+  pointsArray = [];
+  pointsArray = result.routes[0].overview_path;
+  //arreglo = result.routes[0].overview_path;
+  //alert(JSON.stringify(arreglo, null));
+
+  //var escr = JSON.stringify(pointsArray, null);
+  //alert(JSON.stringify(pointsArray, null));
+  //document.getElementsByName("marcadores-text-tamaño")[0].value = pointsArray.length;
+  
+  //alert(pointsArray.length);
+  wayptsLat = [];
+  wayptsLng = [];
+
+  for (x=0; x<pointsArray.length; x++){
+      wayptsLat += pointsArray[x].lat() + "|";
+      wayptsLng += pointsArray[x].lng() + "|";
+  }
+  //for (x=0; x<pointsArray.length; x++)
+      //wayptsNuevo += '|' + pointsArray[x];
+  //for(var x=0; x<pointsArray.length; x++) 
+  document.getElementsByName("marcadores-text-lat")[0].value = JSON.stringify(wayptsLat, null);
+  document.getElementsByName("marcadores-text-lng")[0].value = JSON.stringify(wayptsLng, null);
 }

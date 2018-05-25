@@ -158,7 +158,7 @@
 
                                         <!--Card content-->
                                         <div class="card-body">
-                                            <h1 class="btn btn-outline-primary d-flex justify-content-center text-center">Tabla de rutas</h1>
+                                            <h1 class="btn btn-outline-primary d-flex justify-content-center text-center">Gestión rutas</h1>
 
                                             <!-- Table  -->
                                             <table class="table table-hover text-center table-sm table-responsive-sm">
@@ -189,11 +189,119 @@
                                             </table>
                                             <!-- Table  -->
 
-                                        </div>
+                                            <!--Card-->
+                                            <div class="card my-2">
+                                                <!--Card content-->
+                                                <div class="card-body">
+                                                    <!-- Form -->
+                                                    <form id="form">
+                                                        <!-- Heading -->
+                                                        <h3 class="dark-grey-text text-center">
+                                                            <strong>Gestión de rutas</strong>
+                                                        </h3>
+                                                        <hr>
+                                                        <div class="md-form">
+                                                            <!-- <i class="fas fa-bus prefix grey-text"></i> -->
+                                                            <input type="number" id="formRutaId" class="form-control" required min="1" max="3000">
+                                                            <label for="form3">Id</label>
+                                                        </div>
+                                                        <div class="md-form">
+                                                            <!-- <i class="fa fa-user prefix grey-text"></i> -->
+                                                            <input type="text" id="formRutaNamer" class="form-control" required autocomplete>
+                                                            <label for="form1">Nombre</label>
+                                                        </div>
+                                                        <div class="md-form">
+                                                            <!-- <i class="fa fa-user prefix grey-text"></i> -->
+                                                            <input type="text" id="formRutaDescrip" class="form-control">
+                                                            <label for="form2">Descripción</label>
+                                                        </div>
+                                                        <div class="md-form">
+                                                            <!-- <i class="fa fa-user prefix grey-text"></i> -->
+                                                            <input type="text" id="formRutaEstado" class="form-control" required>
+                                                            <label for="form2">Estado</label>
+                                                        </div>
+                                                        <div class="md-form">
+                                                            <!-- <i class="fa fa-user prefix grey-text"></i> -->
+                                                            <input type="text" id="formRutaFecha" class="form-control" required>
+                                                            <label for="form2">Fecha creación</label>
+                                                        </div>
 
+
+                                                        <div class="text-center">
+                                                            <button class="btn btn-indigo" type="submit">Registrar</button>
+                                                            <hr>
+                                                            <!-- Tabla de gestion de conductores -->
+                                                            <!--Grid row-->
+                                                            <div class="row wow fadeIn">
+
+                                                                <!--Grid column-->
+                                                                <div class="col-md-12 mb-4">
+
+                                                                    <!--Card-->
+                                                                    <div class="card">
+
+                                                                        <!--Card content-->
+                                                                        <div class="card-body">
+                                                                            <h1 class="btn btn-outline-primary d-flex justify-content-center text-center">Editar Conductores</h1>
+                                                                            <!-- Table  -->
+                                                                            <table class="table table-hover text-center table-sm table-responsive-sm">
+                                                                                <!-- Table head -->
+                                                                                <thead class="blue-grey lighten-4">
+                                                                                    <tr>
+                                                                                        <th>Id</th>
+                                                                                        <th>Nombres</th>
+                                                                                        <th>Apelidos</th>
+                                                                                        <th>Temperatura</th>
+                                                                                        <th>AutoAsignado</th>
+                                                                                        <th>Estado</th>
+                                                                                        <th>Editar</th>
+                                                                                    </tr>
+                                                                                </thead>
+                                                                                <!-- Table head -->
+
+                                                                                <!-- Table body -->
+                                                                                <tbody>
+                                                                                    <tr>
+                                                                                        <th scope="row">1</th>
+                                                                                        <td>Cell 1</td>
+                                                                                        <td>Cell 2</td>
+                                                                                        <td>Cell 3</td>
+                                                                                        <td>dfgh</td>
+                                                                                        <td>dfg</td>
+                                                                                        <td>dfg</td>
+                                                                                    </tr>
+
+                                                                                </tbody>
+                                                                                <!-- Table body -->
+                                                                            </table>
+                                                                            <!-- Table  -->
+
+                                                                        </div>
+
+                                                                    </div>
+                                                                    <!--/.Card-->
+
+                                                                </div>
+                                                                <!--Grid column-->
+
+
+                                                            </div>
+                                                            <!--Grid row-->
+
+
+                                                        </div>
+
+                                                    </form>
+                                                    <!-- Form -->
+                                                </div>
+                                            </div>
+                                            <!--/.Card-->
+
+
+
+                                        </div>
                                     </div>
                                     <!--/.Card-->
-
                                 </div>
                                 <!--Grid column-->
 
